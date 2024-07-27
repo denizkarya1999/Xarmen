@@ -32,6 +32,7 @@ public:
 // Implementation
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)
@@ -53,6 +54,8 @@ END_MESSAGE_MAP()
 
 CXarmenDlg::CXarmenDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_XARMEN_DIALOG, pParent)
+	, m_strDrives(_T(""))
+	, m_strText(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MYICON);
 }
@@ -61,6 +64,9 @@ void CXarmenDlg::DoDataExchange(CDataExchange* pDX)
 {
 	DDX_Control(pDX, IDC_EDIT1, m_myEditControl);
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_PROGRESS1, m_progBarCtrl);
+	DDX_Text(pDX, IDC_STATIC_TEXT, m_strDrives);
+	DDX_Text(pDX, IDC_STATIC_TEXT_TWO, m_strText);
 }
 
 BEGIN_MESSAGE_MAP(CXarmenDlg, CDialogEx)
@@ -69,7 +75,10 @@ BEGIN_MESSAGE_MAP(CXarmenDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_COMMAND(ID_FILE_NEW32775, &CXarmenDlg::OnFileNew)
 	ON_BN_CLICKED(IDC_CHECK1, &CXarmenDlg::OnBnClickedCheck1)
-	ON_BN_CLICKED(IDC_CHECK1, &CXarmenDlg::OnBnClickedCheck1)
+	ON_BN_CLICKED(IDC_BUTTON3, &CXarmenDlg::OnBnClickedButton3)
+	ON_BN_CLICKED(IDC_BUTTON_CREATE, &CXarmenDlg::OnBnClickedButtonCreate)
+	ON_BN_CLICKED(IDC_BUTTON_MOVE, &CXarmenDlg::OnBnClickedButtonMove)
+	ON_BN_CLICKED(IDC_BUTTON2, &CXarmenDlg::OnBnClickedButtonDelete)
 END_MESSAGE_MAP()
 
 
@@ -83,6 +92,10 @@ BOOL CXarmenDlg::OnInitDialog()
 	// // when the application's main window is not a dialog
 	SetIcon(m_hIcon, TRUE);       // Set big icon
 	SetIcon(m_hIcon, FALSE);      // Set small icon
+
+
+	m_progBarCtrl.SetScrollRange(0, 100, TRUE);
+	m_progBarCtrl.SetPos(53);
 
 	if (!m_wndToolBar.Create(this)
 		|| !m_wndToolBar.LoadToolBar(IDR_TOOLBAR1)){
@@ -149,6 +162,35 @@ BOOL CXarmenDlg::OnInitDialog()
 	
 	// Now we REALLY Redraw the Toolbar
 	RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, 0);
+
+	// TODO: Add extra initialization here
+	CList<CString, CString>m_list;
+
+	//Add items to the list
+	m_list.AddTail(_T("Deniz"));
+	m_list.AddTail(_T("Jason"));
+	m_list.AddTail(_T("Meng"));
+
+	POSITION position = m_list.Find(_T("Jason"));
+	m_list.InsertAfter(position, _T("Shin"));
+	m_list.InsertAfter(position, _T("Oguzhan"));
+	m_list.InsertAfter(position, _T("Berk"));
+
+	position = m_list.Find(_T("Shin"));
+	m_list.SetAt(position, _T("Florian"));
+
+	position = m_list.Find(_T("Florian"));
+	m_list.RemoveAt(position);
+
+	//iterate the list
+	POSITION pos = m_list.GetHeadPosition();
+	while (pos) {
+		CString nData = m_list.GetNext(pos);
+		CString strVal;
+		strVal.Format(L"%s\n", nData);
+		m_strText.Append(strVal);
+	}
+	UpdateData(FALSE);
 	
 	// TODO: Add extra initialization here
 	return TRUE; // return TRUE unless you set the focus to a control
@@ -225,3 +267,54 @@ void CXarmenDlg::OnBnClickedCheck1()
 		m_enableDisableCheckAction = true;
 	}
 }
+
+
+
+void CXarmenDlg::OnBnClickedButton3()
+{
+	// TODO: Add your control notification handler code here
+	m_strDrives.Format(_T("%lu"), GetLogicalDrives());
+
+	GetDlgItem(IDC_STATIC_TEXT)->SetWindowTextW(m_strDrives);
+}
+
+
+
+void CXarmenDlg::OnBnClickedButtonCreate()
+{
+	// TODO: Add your control notification handler code here
+	SECURITY_ATTRIBUTES saPermissions;
+
+	saPermissions.nLength = sizeof(SECURITY_ATTRIBUTES);
+	saPermissions.lpSecurityDescriptor = NULL;
+	saPermissions.bInheritHandle = TRUE;
+
+	CreateDirectory(L"C:\\Dir1", NULL);
+
+	if (CreateDirectory(L"C:\\", &saPermissions) == TRUE)
+		AfxMessageBox(L"The directory was created.");
+}
+
+void CXarmenDlg::OnBnClickedButtonMove()
+{
+	// TODO: Add your control notification handler code here
+	SECURITY_ATTRIBUTES saPermissions;
+
+	saPermissions.nLength = sizeof(SECURITY_ATTRIBUTES);
+	saPermissions.lpSecurityDescriptor = NULL;
+	saPermissions.bInheritHandle = TRUE;
+
+	CreateDirectory(L"C:\\TestDirectory", NULL);
+
+	if (MoveFile(L"C:\\Dir1", L"C:\\TestDirectory\\Dir1") == TRUE)
+		AfxMessageBox(L"The directory has been moved");
+}
+
+
+void CXarmenDlg::OnBnClickedButtonDelete()
+{
+	// TODO: Add your control notification handler code here
+	if (RemoveDirectory(L"C:\\Dir1") == TRUE)
+		AfxMessageBox(L"The directory has been deleted");
+}
+

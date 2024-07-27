@@ -10,6 +10,7 @@
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
+#include "FileProcessor.h"
 
 
 // CXarmenApp
@@ -73,6 +74,7 @@ BOOL CXarmenApp::InitInstance()
 	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 
 	CXarmenDlg dlg;
+	FileProcessor fileDlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 

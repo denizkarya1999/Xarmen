@@ -40,4 +40,11 @@ public:
 	BOOL m_enableDisableCheckAction;
 	CEdit m_myEditControl;
 	afx_msg void OnBnClickedCheck1();
+	CProgressCtrl m_progBarCtrl;
+	CString m_strDrives;
+	afx_msg void OnBnClickedButton3();
+	afx_msg void OnBnClickedButtonCreate();
+	afx_msg void OnBnClickedButtonMove();
+	afx_msg void OnBnClickedButtonDelete();
+	CString m_strText;
 };
