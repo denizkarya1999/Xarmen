@@ -13,6 +13,8 @@
 #define IDR_TOOLBAR1                    135
 #define IDR_ACCELERATOR1                137
 #define IDD_FILE_PROCESSING_DIALOG      145
+#define IDD_DIALOG_SERIALIZATION        147
+#define IDD_DIALOG_THREADING            149
 #define IDC_EDIT1                       1000
 #define IDC_EDIT2                       1001
 #define IDC_CHECK1                      1002
@@ -27,6 +29,15 @@
 #define IDC_SAVE_BUTTON                 1016
 #define IDC_NEW_BUTTON                  1017
 #define IDC_STATIC_TEXT_TWO             1018
+#define IDC_EDIT_NAME                   1019
+#define IDC_EDIT_EMP_ID                 1020
+#define IDC_EDIT_AGE                    1021
+#define IDC_BUTTON_OPEN                 1022
+#define IDC_BUTTON_SAVE                 1023
+#define IDC_BUTTON1                     1024
+#define IDC_BUTTON_START_THREAD         1024
+#define IDC_BUTTON_STOP_THREAD          1025
+#define IDC_STATIC_TEXT_STATUS          1026
 #define ID_FILE_NEW32775                32775
 #define ID_FILE_OPEN32776               32776
 #define ID_FILE_SAVE32777               32777
@@ -41,9 +52,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        147
+#define _APS_NEXT_RESOURCE_VALUE        151
 #define _APS_NEXT_COMMAND_VALUE         32794
-#define _APS_NEXT_CONTROL_VALUE         1019
+#define _APS_NEXT_CONTROL_VALUE         1027
 #define _APS_NEXT_SYMED_VALUE           104
 #endif
 #endif

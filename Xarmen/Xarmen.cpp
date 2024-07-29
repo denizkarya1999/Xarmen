@@ -6,11 +6,13 @@
 #include "framework.h"
 #include "Xarmen.h"
 #include "XarmenDlg.h"
+#include "FileProcessor.h"
+#include "MFCSerialization.h"
+#include "MFCMultithreading.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
-#include "FileProcessor.h"
 
 
 // CXarmenApp
@@ -75,8 +77,10 @@ BOOL CXarmenApp::InitInstance()
 
 	CXarmenDlg dlg;
 	FileProcessor fileDlg;
-	m_pMainWnd = &dlg;
-	INT_PTR nResponse = dlg.DoModal();
+	MFCSerialization serializeDlg;
+	MFCMultithreading threadingDlg;
+	m_pMainWnd = &threadingDlg;
+	INT_PTR nResponse = threadingDlg.DoModal();
 
 	if (nResponse == IDOK)
 	{

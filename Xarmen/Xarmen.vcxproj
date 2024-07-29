@@ -183,8 +183,11 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CEmployee.h" />
     <ClInclude Include="FileProcessor.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="MFCMultithreading.h" />
+    <ClInclude Include="MFCSerialization.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
@@ -192,7 +195,10 @@
     <ClInclude Include="XarmenDlg.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CEmployee.cpp" />
     <ClCompile Include="FileProcessor.cpp" />
+    <ClCompile Include="MFCMultithreading.cpp" />
+    <ClCompile Include="MFCSerialization.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
