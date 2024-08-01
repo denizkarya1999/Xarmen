@@ -79,6 +79,7 @@ BEGIN_MESSAGE_MAP(CXarmenDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_CREATE, &CXarmenDlg::OnBnClickedButtonCreate)
 	ON_BN_CLICKED(IDC_BUTTON_MOVE, &CXarmenDlg::OnBnClickedButtonMove)
 	ON_BN_CLICKED(IDC_BUTTON2, &CXarmenDlg::OnBnClickedButtonDelete)
+	ON_COMMAND(ID_FILE_OPEN32776, &CXarmenDlg::OnFileOpen32776)
 END_MESSAGE_MAP()
 
 
@@ -318,3 +319,10 @@ void CXarmenDlg::OnBnClickedButtonDelete()
 		AfxMessageBox(L"The directory has been deleted");
 }
 
+
+
+void CXarmenDlg::OnFileOpen32776()
+{
+	// TODO: Add your command handler code here
+	MessageBox(L"This opens a new file");
+}

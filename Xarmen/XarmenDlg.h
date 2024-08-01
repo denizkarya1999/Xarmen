@@ -47,4 +47,5 @@ public:
 	afx_msg void OnBnClickedButtonMove();
 	afx_msg void OnBnClickedButtonDelete();
 	CString m_strText;
+	afx_msg void OnFileOpen32776();
 };

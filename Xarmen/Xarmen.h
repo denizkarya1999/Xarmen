@@ -23,9 +23,11 @@ public:
 // Overrides
 public:
 	virtual BOOL InitInstance();
+	HACCEL m_hAccelTable;
 
 // Implementation
 	DECLARE_MESSAGE_MAP()
+	virtual BOOL ProcessMessageFilter(int code, LPMSG lpMsg);
 };
 
 extern CXarmenApp theApp;

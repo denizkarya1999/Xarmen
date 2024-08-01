@@ -59,6 +59,9 @@ BOOL CXarmenApp::InitInstance()
 
 	AfxEnableControlContainer();
 
+	m_hAccelTable = LoadAccelerators(AfxGetInstanceHandle(),
+		MAKEINTRESOURCE(IDR_ACCELERATOR1));
+
 	// Create the shell manager, in case the dialog contains
 	// any shell tree view or shell list view controls.
 	CShellManager *pShellManager = new CShellManager;
@@ -79,8 +82,8 @@ BOOL CXarmenApp::InitInstance()
 	FileProcessor fileDlg;
 	MFCSerialization serializeDlg;
 	MFCMultithreading threadingDlg;
-	m_pMainWnd = &threadingDlg;
-	INT_PTR nResponse = threadingDlg.DoModal();
+	m_pMainWnd = &dlg;
+	INT_PTR nResponse = dlg.DoModal();
 
 	if (nResponse == IDOK)
 	{
@@ -113,3 +116,10 @@ BOOL CXarmenApp::InitInstance()
 	return FALSE;
 }
 
+BOOL CXarmenApp::ProcessMessageFilter(int code, LPMSG lpMsg) {
+	if (code >= 0 && m_pMainWnd && m_hAccelTable) {
+		if (::TranslateAccelerator(m_pMainWnd->m_hWnd, m_hAccelTable, lpMsg))
+			return TRUE;
+	}
+	return CWinApp::ProcessMessageFilter(code, lpMsg);
+}

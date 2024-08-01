@@ -11,10 +11,10 @@
 #define IDR_MYICON                      129
 #define IDM_MAINMENU                    131
 #define IDR_TOOLBAR1                    135
-#define IDR_ACCELERATOR1                137
 #define IDD_FILE_PROCESSING_DIALOG      145
 #define IDD_DIALOG_SERIALIZATION        147
 #define IDD_DIALOG_THREADING            149
+#define IDR_ACCELERATOR1                151
 #define IDC_EDIT1                       1000
 #define IDC_EDIT2                       1001
 #define IDC_CHECK1                      1002
@@ -34,7 +34,6 @@
 #define IDC_EDIT_AGE                    1021
 #define IDC_BUTTON_OPEN                 1022
 #define IDC_BUTTON_SAVE                 1023
-#define IDC_BUTTON1                     1024
 #define IDC_BUTTON_START_THREAD         1024
 #define IDC_BUTTON_STOP_THREAD          1025
 #define IDC_STATIC_TEXT_STATUS          1026
@@ -45,15 +44,15 @@
 #define ID_BUTTON32785                  32785
 #define ID_BUTTON32786                  32786
 #define ID_BUTTON32789                  32789
-#define ID_ACCELERATOR32790             32790
-#define ID_ACCELERATOR32791             32791
+#define ID_ACCELERATOR32794             32794
+#define ID_ACCELERATOR32795             32795
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        151
-#define _APS_NEXT_COMMAND_VALUE         32794
+#define _APS_NEXT_RESOURCE_VALUE        152
+#define _APS_NEXT_COMMAND_VALUE         32797
 #define _APS_NEXT_CONTROL_VALUE         1027
 #define _APS_NEXT_SYMED_VALUE           104
 #endif
